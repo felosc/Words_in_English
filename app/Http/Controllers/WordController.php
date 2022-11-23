@@ -28,6 +28,7 @@ class WordController extends Controller
             $info_nesessary = Word::find($idramdom[$i]);
             array_push($getwords, $info_nesessary[0]->w_spanish);
         }
+
         return view('word.index', compact('getwords', 'wordtoguess'));
     }
 }

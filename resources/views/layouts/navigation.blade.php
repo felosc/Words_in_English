@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('word')" :active="request()->routeIs('word.index')">
+                    <x-nav-link :href="route('word.index')" :active="request()->routeIs('word')">
                         {{ __('WordEnglisGame') }}
                     </x-nav-link>                    
                     
