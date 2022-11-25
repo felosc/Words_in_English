@@ -7,14 +7,17 @@
         </h2>
     </x-slot>
 
-    <div class="p-6 mt-10 max-w-sm mx-auto bg-gray-900 rounded-xl shadow-lg flex-row items-center space-x-4">
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{{ $wordtoguess }}</h5>
+    <div class="p-6 mt-10 max-w-sm mx-auto bg-gray-500 rounded-xl shadow-lg flex-row items-center space-x-4">
+        <div class=" text-center rounded-lg p-10">
+            <h5 class="text-2xl font-bold text-white">{{ $wordtoguess }}</h5>
+        </div>
 
 @foreach ($getwords as $word )
-
-    <a href="#" class=" basis-1/3 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-    {{$word}}
-    </a>
+        <div class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 ">
+            <a href="#" >
+                {{$word}}
+            </a>
+        </div>
 @endforeach
 
 </div>
