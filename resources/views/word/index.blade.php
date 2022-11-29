@@ -1,22 +1,37 @@
 
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('WordEnglisGame') }}
         </h2>
     </x-slot>
-
+    
+    <div class="max-w-lg mx-auto mt-5 text-center">
+    @if (session('success'))
+    <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+        <span class="font-medium">{{ session('success') }}</span>
+    </div>
+        @endif
+        @if (session('fail'))
+        <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+            <span class="font-medium">{{ session('fail') }}</span>
+        </div>
+        @endif
+    </div>
     <div class="p-6 mt-10 max-w-sm mx-auto bg-gray-500 rounded-xl shadow-lg flex-row items-center space-x-4">
-        <div class=" text-center rounded-lg p-10">
+    <div class=" text-center rounded-lg p-10">
             <h5 class="text-2xl font-bold text-white">{{ $wordtoguess }}</h5>
         </div>
 
 @foreach ($getwords as $word )
         <div class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 ">
-            <a href="#" >
-                {{$word}}
-            </a>
+            <form action="{{ route('word.answer') }}" method="post">
+                @csrf
+                <input type="text" name="wordtoguess" value="{{ $wordtoguess }}" class=" hidden">
+                <button name="wordselected" value="{{ $word }}" type="submit">
+                    {{$word}}
+                </button>
+            </form>
         </div>
 @endforeach
 

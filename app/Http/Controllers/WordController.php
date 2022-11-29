@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 use App\Models\Word;
 
 class WordController extends Controller
@@ -30,5 +31,21 @@ class WordController extends Controller
         }
 
         return view('word.index', compact('getwords', 'wordtoguess'));
+    }
+
+    public function CompareAnswer(Request $request)
+    {
+        $wordtoguess = $request->wordtoguess;
+        $wordselected = $request->wordselected;
+        $spanish_wordtoguess = DB::table('words')->where('word', $wordtoguess)->first('w_spanish');
+        if ($wordselected == $spanish_wordtoguess->w_spanish) {
+            return redirect()
+                ->route('word.index')
+                ->with('success', 'Palabra Correcta Sigue asi');
+        } else {
+            return redirect()
+                ->route('word.index')
+                ->with('fail', 'Palabra Incorrecta Intentalo de nuevo You can');
+        }
     }
 }

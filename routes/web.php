@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/word', [WordController::class, 'getRandomWords'])->name('word.index');
+    Route::post('/word', [WordController::class, 'CompareAnswer'])->name('word.answer');
 });
 
 require __DIR__ . '/auth.php';
