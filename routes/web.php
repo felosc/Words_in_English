@@ -31,6 +31,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    //Route::get('/word', [WordController::class, ''])->name('word.delete');
+    //Route::get('/word', [WordController::class, ''])->name('word.update');
+    //Route::get('/word', [WordController::class, ''])->name('word.show');
+    //Route::get('/word', [WordController::class, ''])->name('word.store');
+    //Route::get('/word', [WordController::class, ''])->name('word.create');
+    //Route::get('/word', [WordController::class, ''])->name('word.words');
     Route::get('/word', [WordController::class, 'getRandomWords'])->name('word.index');
     Route::post('/word', [WordController::class, 'CompareAnswer'])->name('word.answer');
 });
