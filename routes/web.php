@@ -41,4 +41,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/word', [WordController::class, 'CompareAnswer'])->name('word.answer');
 });
 
+Route::middleware('auth')->group(function () {
+    //Route::delete('/user', [WordController::class, ''])->name('user.delete');
+    //Route::put('/user', [WordController::class, ''])->name('user.update');
+    //Route::get('/user', [WordController::class, ''])->name('user.edit');
+    //Route::get('/user', [WordController::class, ''])->name('user.show');
+    //Route::post('/user', [WordController::class, ''])->name('user.store');
+    //Route::get('/user', [WordController::class, ''])->name('user.create');
+    //Route::get('/user', [WordController::class, ''])->name('user.index');
+});
+
+
+
+
+
 require __DIR__ . '/auth.php';
