@@ -48,4 +48,79 @@ class WordController extends Controller
                 ->with('fail', 'Palabra Incorrecta Intentalo de nuevo You can');
         }
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('word.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Word $id)
+    {
+        $show_Word = $id;
+        return view('word.show', compact('show_Word'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Word $id)
+    {
+        $editWord = $id;
+        return view('word.edit', compact('editWord'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Word $id)
+    {
+        Word::where('id', $id)
+            ->update([
+                'name' => $request->name,
+                'email' => $request->email
+            ]);
+
+        return redirect()->route('word.show', $id);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Word $id)
+    {
+        $Word = Word::find($id);
+        $Word->delete();
+        return redirect()->route('word.index');
+    }
 }
