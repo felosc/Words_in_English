@@ -10,6 +10,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     You're logged in!
+                            <button  class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 " >
+            <a href="{{ route("word.create") }}">hola</a>
+        </button>
                 </div>
             </div>
         </div>

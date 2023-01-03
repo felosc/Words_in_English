@@ -30,15 +30,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth')->group(function () {
+Route::controller(WordController::class)->group(function () {
+    Route::get('words', 'getRandomWords')->name('word.gameword');
+    Route::post('word.answer', 'CompareAnswer')->name('word.answer');
+    Route::get('word.create', 'create')->name('word.create');
+    Route::post('word.store', [WordController::class, 'store'])->name('word.store');
+    //Route::get('word/{id}', [WordController::class, 'show'])->name('word.show');
     //Route::get('/word', [WordController::class, ''])->name('word.delete');
     //Route::get('/word', [WordController::class, ''])->name('word.update');
-    //Route::get('/word', [WordController::class, ''])->name('word.show');
-    //Route::get('/word', [WordController::class, ''])->name('word.store');
-    //Route::get('/word', [WordController::class, ''])->name('word.create');
     //Route::get('/word', [WordController::class, ''])->name('word.words');
-    Route::get('/word', [WordController::class, 'getRandomWords'])->name('word.index');
-    Route::post('/word', [WordController::class, 'CompareAnswer'])->name('word.answer');
 });
 
 Route::middleware('auth')->group(function () {

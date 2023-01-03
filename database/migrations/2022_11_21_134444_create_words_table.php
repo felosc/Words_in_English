@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('words', function (Blueprint $table) {
             $table->id();
             $table->string('word')->unique();
-            $table->string('w_spanih');
+            $table->string('w_spanish');
             $table->timestamps();
         });
     }

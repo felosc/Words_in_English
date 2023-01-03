@@ -20,7 +20,7 @@ class WordController extends Controller
     public function getRandomWords()
     {
         $getwords = array();
-        $idramdom = [[rand(1, 10)], [rand(1, 10)], [rand(1, 10)]];
+        $idramdom = [[rand(1, 12)], [rand(1, 12)], [rand(1, 12)]];
         $idramdomtoselect = rand(0, 2);
         $wordtoguess = null;
         $wordtoguess = Word::find($idramdom[$idramdomtoselect]);
@@ -30,7 +30,7 @@ class WordController extends Controller
             array_push($getwords, $info_nesessary[0]->w_spanish);
         }
 
-        return view('word.index', compact('getwords', 'wordtoguess'));
+        return view('word.gameword', compact('getwords', 'wordtoguess'));
     }
 
     public function CompareAnswer(Request $request)
@@ -40,11 +40,11 @@ class WordController extends Controller
         $spanish_wordtoguess = DB::table('words')->where('word', $wordtoguess)->first('w_spanish');
         if ($wordselected == $spanish_wordtoguess->w_spanish) {
             return redirect()
-                ->route('word.index')
+                ->route('word.gameword')
                 ->with('success', 'Palabra Correcta Sigue asi');
         } else {
             return redirect()
-                ->route('word.index')
+                ->route('word.gameword')
                 ->with('fail', 'Palabra Incorrecta Intentalo de nuevo You can');
         }
     }
@@ -67,6 +67,16 @@ class WordController extends Controller
      */
     public function store(Request $request)
     {
+        $new_word = new Word([
+            'word' => $request->new_word,
+            'w_spanish' => $request->new_word_spanish,
+        ]);
+
+        if ($new_word->save() == true) {
+            return redirect()->back()->with(["success" => "Palabra Nueva Guardada"]);
+        } else {
+            return redirect()->back()->with(["fail" => "Error Al Guardar La Nueva Palabra"]);
+        };
     }
 
     /**
