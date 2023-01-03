@@ -13,6 +13,10 @@
                             <button  class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 " >
             <a href="{{ route("word.create") }}">hola</a>
         </button>
+
+                                    <button  class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 " >
+            <a href="{{ route("word.index") }}">hola mira las palabras *voz pelotuda en spanglish V:*</a>
+        </button>
                 </div>
             </div>
         </div>

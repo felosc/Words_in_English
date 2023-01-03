@@ -10,12 +10,12 @@ use App\Models\Word;
 
 class WordController extends Controller
 {
-    /*
+
     public function index()
     {
         $getwords = Word::all();
         return view('word.index', compact('getwords'));
-    }*/
+    }
 
     public function getRandomWords()
     {
