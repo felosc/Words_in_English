@@ -36,10 +36,10 @@ Route::controller(WordController::class)->group(function () {
     Route::post('word.answer', 'CompareAnswer')->name('word.answer');
     Route::get('word.create', 'create')->name('word.create');
     Route::post('word.store', [WordController::class, 'store'])->name('word.store');
-    //Route::get('word/{id}', [WordController::class, 'show'])->name('word.show');
-    //Route::get('/word', [WordController::class, ''])->name('word.delete');
+    Route::get('word.show/{id}', [WordController::class, 'show'])->name('word.show');
+    Route::get('word.edit/{id}', [WordController::class, 'edit'])->name('word.edit');
     //Route::get('/word', [WordController::class, ''])->name('word.update');
-    //Route::get('/word', [WordController::class, ''])->name('word.words');
+    //Route::get('/word', [WordController::class, ''])->name('word.delete');
 });
 
 Route::middleware('auth')->group(function () {

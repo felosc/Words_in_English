@@ -87,8 +87,8 @@ class WordController extends Controller
      */
     public function show(Word $id)
     {
-        $show_Word = $id;
-        return view('word.show', compact('show_Word'));
+        $show_word = $id;
+        return view('word.show', compact('show_word'));
     }
 
     /**
@@ -100,10 +100,12 @@ class WordController extends Controller
     public function edit(Word $id)
     {
         $editWord = $id;
+
         return view('word.edit', compact('editWord'));
     }
 
     /**
+     * 
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

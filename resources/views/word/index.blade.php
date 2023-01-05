@@ -5,13 +5,16 @@
         </h2>
     </x-slot>
     
-    <div class="max-w-lg mx-auto mt-5 text-center grid grid-cols-3">
-        @foreach ($getwords as $word )
-        <div class="bg-sky-500 m-2 rounded-md hover:bg-sky-300">
-            <p>{{ $word->word }}</p>
-            <p>{{ $word->w_spanish }}</p>
-        </div>
-        @endforeach
+<div class="max-w-lg mx-auto mt-5 text-center grid grid-cols-3">
+    @foreach ($getwords as $word )
+        <button>
+                <a href="{{ route('word.show',$word->id) }}">
+                <div class="bg-sky-500 m-2 rounded-md hover:bg-sky-300 p-4">
+                    <p>{{ $word->word }}</p>
+                </div>
+            </a>
+            </button>
+    @endforeach
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -25,6 +28,7 @@
         $('[data-toggle="tooltip"]').tooltip({
             trigger : 'hover'
         });
-    });
+    }); 
+
 </script>
 </x-app-layout>

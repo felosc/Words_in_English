@@ -28,7 +28,8 @@
                 <x-input-label class="font-bold text-cyan-50 text-center" for="new_word_spanihs" :value="__('New Word In Spanish ')" />
                 <x-text-input id="new_word_spanish" name="new_word_spanish" type="text" class="mt-1 block w-full text-center" autocomplete="new-word" />
             </div>            
-            <div class=" bg-blue-100 text-center m-5 p-3 rounded-sm hover:bg-sky-300 ">
+            <div class=" 
+             ">
                 <button type="submit">
                     Save New Word
                 </button>
