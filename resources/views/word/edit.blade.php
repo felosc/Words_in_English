@@ -18,7 +18,7 @@
         @endif
     </div>
     <div class="p-6 mt-10 max-w-sm mx-auto bg-gray-500 rounded-xl shadow-lg flex-row items-center">
-        <form action="" method="post">
+        <form action="{{ route('word.update',$editWord->id) }}" method="post">
             @csrf
             @method('PUT')
             <div>

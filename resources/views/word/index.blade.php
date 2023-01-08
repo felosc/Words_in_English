@@ -4,6 +4,21 @@
             {{ __('HELLO THESE ARE ALL THE WORDS') }}
         </h2>
     </x-slot>
+
+        <div class="max-w-lg mx-auto mt-5 text-center">
+    @if (session('success'))
+    <div id="alert-dismissible" class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+        <span class="font-medium">{{ session('success') }}</span>
+    </div>
+        @endif
+        @if (session('fail'))
+        <div id="alert-dismissible" class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+            <span class="font-medium">{{ session('fail') }}</span>
+        </div>
+        @endif
+    </div>
+
+
     
 <div class="max-w-lg mx-auto mt-5 text-center grid grid-cols-3">
     @foreach ($getwords as $word )

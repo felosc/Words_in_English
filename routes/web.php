@@ -38,8 +38,8 @@ Route::controller(WordController::class)->group(function () {
     Route::post('word.store', [WordController::class, 'store'])->name('word.store');
     Route::get('word.show/{id}', [WordController::class, 'show'])->name('word.show');
     Route::get('word.edit/{id}', [WordController::class, 'edit'])->name('word.edit');
-    //Route::get('/word', [WordController::class, ''])->name('word.update');
-    //Route::get('/word', [WordController::class, ''])->name('word.delete');
+    Route::put('word.update/{word}', [WordController::class, 'update'])->name('word.update');
+    Route::delete('word.delete/{word}', [WordController::class, 'destroy'])->name('word.delete');
 });
 
 Route::middleware('auth')->group(function () {

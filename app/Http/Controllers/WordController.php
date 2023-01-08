@@ -7,10 +7,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use App\Models\Word;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class WordController extends Controller
 {
-
+    /*
+    public function __construct()
+    {
+        $current_words = Word::count();
+        return view('dashboard', compact('current_words'));
+    }
+    */
     public function index()
     {
         $getwords = Word::all();
@@ -19,8 +26,9 @@ class WordController extends Controller
 
     public function getRandomWords()
     {
+        $conuntwords = word::count();
         $getwords = array();
-        $idramdom = [[rand(1, 12)], [rand(1, 12)], [rand(1, 12)]];
+        $idramdom = [[rand(1, $conuntwords)], [rand(1, $conuntwords)], [rand(1, $conuntwords)]];
         $idramdomtoselect = rand(0, 2);
         $wordtoguess = null;
         $wordtoguess = Word::find($idramdom[$idramdomtoselect]);
@@ -112,15 +120,15 @@ class WordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Word $id)
+    public function update(Request $request, Word $word)
     {
-        Word::where('id', $id)
+        Word::where('id', $word->id)
             ->update([
-                'name' => $request->name,
-                'email' => $request->email
+                'word' => $request->edit_word,
+                'w_spanish' => $request->edit_word_spanish
             ]);
 
-        return redirect()->route('word.show', $id);
+        return redirect()->route('word.show', $word->id);
     }
 
     /**
@@ -129,10 +137,14 @@ class WordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Word $id)
+    public function destroy(Word $word)
     {
-        $Word = Word::find($id);
-        $Word->delete();
-        return redirect()->route('word.index');
+        $Word = Word::find($word->id);
+
+        if ($Word->delete() == true) {
+            return redirect()->route('word.index')->with(["success" => "Palabra Borrada"]);
+        } else {
+            return redirect()->route('word.index')->with(["fail" => "Error Al Borrar la Palabra"]);
+        };
     }
 }
