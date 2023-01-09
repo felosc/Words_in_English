@@ -45,9 +45,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $id)
+    public function show(User $user)
     {
-        $showUser = $id;
+        $showUser = $user;
         return view('User.show', compact('showUser'));
     }
 
@@ -57,9 +57,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $id)
+    public function edit(User $user)
     {
-        $editUser = $id;
+        $editUser = $user;
         return view('User.edit', compact('editUser'));
     }
 
@@ -70,15 +70,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $id)
+    public function update(Request $request, User $user)
     {
-        User::where('id', $id)
+        User::where('id', $user->id)
             ->update([
-                'name' => $request->name,
-                'email' => $request->email
+                'name' => $request->name_edit,
+                'email' => $request->email_edit
             ]);
 
-        return redirect()->route('user.show', $id);
+        return redirect()->route('user.show', $user->id);
     }
 
     /**
@@ -87,9 +87,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $id)
+    public function destroy(User $user)
     {
-        $user = User::find($id);
+        $user = User::find($user->id);
         $user->delete();
         return redirect()->route('user.index');
     }

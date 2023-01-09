@@ -4,6 +4,7 @@ use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WordController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,13 +44,13 @@ Route::controller(WordController::class)->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    //Route::delete('/user', [WordController::class, ''])->name('user.delete');
-    //Route::put('/user', [WordController::class, ''])->name('user.update');
-    //Route::get('/user', [WordController::class, ''])->name('user.edit');
-    //Route::get('/user', [WordController::class, ''])->name('user.show');
-    //Route::post('/user', [WordController::class, ''])->name('user.store');
-    //Route::get('/user', [WordController::class, ''])->name('user.create');
-    //Route::get('/user', [WordController::class, ''])->name('user.index');
+    Route::delete('user.delete/{user}', [UserController::class, 'destroy'])->name('user.delete');
+    Route::get('user.edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('user.show/{user}', [UserController::class, 'show'])->name('user.show');
+    Route::put('user.update/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::post('user.store', [WordController::class, 'store'])->name('user.store');
+    Route::get('user.create', [WordController::class, 'create'])->name('user.create');
+    Route::get('user.index', [UserController::class, 'index'])->name('user.index');
 });
 
 

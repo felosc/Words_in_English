@@ -20,6 +20,10 @@
 <a href="{{ route("word.index") }}">See or look up words</a>
 </button>
 
+                        <button  class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 " >
+<a href="{{ route("user.index") }}">See or look up users</a>
+</button>
+
 <p>La base de datos cuenta con palabras</p>
             </div>
         </div>
