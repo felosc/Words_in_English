@@ -20,34 +20,39 @@
     </div>
 
 
-<div class="p-6 mt-10 max-w-sm mx-auto bg-gray-500 rounded-xl shadow-lg flex-row items-center space-x-4">
+<div class="p-6 mt-10 max-w-sm mx-auto bg-gray-800 rounded-xl shadow-lg flex-row items-center space-x-4">
    
         <div class=" text-center p-10">
             <h5 class="text-2xl font-bold text-white">{{ $show_word->word }}</h5>
         </div>
 
-        <div class=" text-center p-10">
-            <p>Meaning in Spanish</p>
+        <div class=" text-center p-5">
+            <p class="text-white">Meaning in Spanish</p>
         </div>        
 
         <div class=" text-center rounded-lg bg-slate-400 p-10">
             <h5 class="text-2xl font-bold text-white">{{ $show_word->w_spanish }}</h5>
         </div>
+ @can('Admin')
+     hola
+ @endcan
+        
+<div class="flex content-center">
+    <button class="bg-blue-100 text-center m-5 p-3 rounded-sm hover:bg-sky-300">
+        <a href="{{ route('word.edit',$show_word->id) }}">
+            Edit word
+        </a>
+    </button>
 
-<div class="">
-                <button class="bg-blue-100 text-center m-5 p-3 rounded-sm hover:bg-sky-300">
-                    <a href="{{ route('word.edit',$show_word->id) }}">
-                        Edit word
-                    </a>
-                </button>
-                <form action="{{ route('word.delete',$show_word->id) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="bg-blue-100 text-center m-5 p-3 rounded-sm hover:bg-sky-300" >
-                        Delete word
-                    </button>
-                </form>
+    <form action="{{ route('word.delete',$show_word->id) }}" method="post">
+        @csrf
+        @method('DELETE')
+        <button class="bg-blue-100 text-center m-5 p-3 rounded-sm hover:bg-sky-300" >
+            Delete word
+        </button>
+    </form>
 </div>
+
 
 
     
