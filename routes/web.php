@@ -3,6 +3,7 @@
 use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\UserController;
 
