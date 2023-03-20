@@ -12,23 +12,26 @@
                 <div class="p-6 text-gray-900">
                     Welcome to my page about a game of guessing words in English
                 </div>
+                @can('word.create')
                 <a href="{{ route("word.create") }}">
                     <button  class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 " >
-                    Create a new word
-                </button>
+                        Create a new word
+                    </button>
                 </a>
-
+                @endcan
+                
                 <a href="{{ route("word.index") }}">
                     <button  class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 " >
                     See or look up words
                 </button>
                 </a>
-
+                @can('user.index')    
                 <a href="{{ route("user.index") }}">
                     <button  class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 " >
-                    See or look up users
-                </button>
+                        See or look up users
+                    </button>
                 </a>
+                @endcan
 
 <p>La base de datos cuenta con palabras</p>
             </div>

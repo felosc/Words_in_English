@@ -33,29 +33,26 @@
         <div class=" text-center rounded-lg bg-slate-400 p-10">
             <h5 class="text-2xl font-bold text-white">{{ $show_word->w_spanish }}</h5>
         </div>
- @can('Admin')
-     hola
- @endcan
         
-<div class="flex content-center">
-    <button class="bg-blue-100 text-center m-5 p-3 rounded-sm hover:bg-sky-300">
-        <a href="{{ route('word.edit',$show_word->id) }}">
-            Edit word
-        </a>
-    </button>
-
-    <form action="{{ route('word.delete',$show_word->id) }}" method="post">
-        @csrf
-        @method('DELETE')
-        <button class="bg-blue-100 text-center m-5 p-3 rounded-sm hover:bg-sky-300" >
-            Delete word
-        </button>
-    </form>
-</div>
-
-
-
+        <div class="flex content-center">
+             @can('word.edit')
     
+                 <button class="bg-blue-100 text-center m-5 p-3 rounded-sm hover:bg-sky-300">
+                    <a href="{{ route('word.edit',$show_word->id) }}">
+                    Edit word
+                    </a>
+                </button>
+            @endcan
+             @can('word.delete')
+             <form action="{{ route('word.delete',$show_word->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button class="bg-blue-100 text-center m-5 p-3 rounded-sm hover:bg-sky-300" >
+                    Delete word
+                </button>
+            </form>
+            @endcan   
+        </div>    
 </div>
 
 

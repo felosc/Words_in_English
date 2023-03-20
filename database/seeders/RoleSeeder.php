@@ -23,7 +23,7 @@ class RoleSeeder extends Seeder
         $visitor =  Role::create(['name' => 'Visitor']);
 
         Permission::create(['name' => 'word.index'])->syncRoles([$admin, $visitor]);
-        Permission::create(['name' => 'word.crate'])->syncRoles([$admin]);
+        Permission::create(['name' => 'word.create'])->syncRoles([$admin]);
         Permission::create(['name' => 'word.show'])->syncRoles([$admin, $visitor]);
         Permission::create(['name' => 'word.edit'])->syncRoles([$admin]);
         Permission::create(['name' => 'word.delete'])->syncRoles([$admin]);
