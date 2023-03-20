@@ -6,9 +6,9 @@
     </x-slot>
 
         <div class="max-w-lg mx-auto mt-5 text-center">
-    @if (session('success'))
+    @if (session('status'))
     <div id="alert-dismissible" class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
-        <span class="font-medium">{{ session('success') }}</span>
+        <span class="font-medium">{{ session('status') }}</span>
     </div>
         @endif
         @if (session('fail'))

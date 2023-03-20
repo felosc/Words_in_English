@@ -37,9 +37,9 @@ class ProfileController extends Controller
         }
 
         if ($request->user()->save() == true) {
-            return Redirect::route('profile.edit')->with('success', 'profile-updated');
+            return Redirect::route('profile.edit')->with('status', 'profile-updated');
         } else {
-            return Redirect::route('profile.edit')->with('success', 'fail-profile-updated');
+            return Redirect::route('profile.edit')->with('fail', 'fail-profile-updated');
         };
     }
 
