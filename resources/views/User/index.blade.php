@@ -5,12 +5,12 @@
             </h2>
         </x-slot>
 
-<div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
-        <div class="flex items-center justify-center">     
-          <table class="bg-gray-200 rounded-lg border-separate border-spacing-2">
+
+
+<!-- FFFFFF!!!!!!!!!!! me gano una tabla no soy capaz de ponerle media cueries V: --->
+
+<div class=" py-12 flex items-center justify-center">
+          <table class="md:table-fixed py-12 bg-gray-200 rounded-lg border-separate border-spacing-2">
             <thead>
               <tr >
                   <th class="">NAME ID</th>
@@ -45,9 +45,10 @@
       </tbody>
     </table>
 
-                    </div>
-                </div>
-            </div>
-      </div>             
+</div>
+
+
+
+               
 
  </x-app-layout>  
