@@ -19,18 +19,28 @@
                 <x-input-label :value="__('User Email')" />                
                 <p>{{$showUser->email}}</p>
             </div>
-            <div class="flex">
+            <div class="grid grid-cols-2">
                 <div class="mt-4 text-center flex-1">               
                     <button>
                         <a href="{{route('user.index')}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">home</a>
                     </button>
                 </div>
                 
-                <div class="mt-4 text-center flex-1 ">
+                <div class="mt-4 text-center flex-none ">
                     <button>
                         <a href="{{route('user.edit', $showUser->id)}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit User</a>
                     </button>
                 </div>
+
+                <div class="mt-4 text-center flex-1 col-span-2 ">
+                    <form action="{{ route('user.delete',$showUser->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 mr-2 mb-1 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                           Delete User
+                        </button>
+                    </form>
+                </div> 
             </div>
         </div>
         
