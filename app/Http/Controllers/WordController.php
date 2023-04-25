@@ -18,6 +18,13 @@ class WordController extends Controller
         return view('dashboard', compact('current_words'));
     }
     */
+    public function  countdasboard()
+    {
+        $lel = Word::count();
+        return view('dashboard', compact('lel'));
+    }
+
+
     public function index()
     {
         $getwords = Word::all();

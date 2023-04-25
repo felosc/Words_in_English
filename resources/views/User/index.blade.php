@@ -7,7 +7,7 @@
 
 
 
-<!-- FFFFFF!!!!!!!!!!! me gano una tabla no soy capaz de ponerle media cueries V: --->
+<!-- Nos Fuimonosss V:V:V:V:V:V: lunes-24-2023--->
 
 <div class=" py-12 flex items-center justify-center">
           <table class="md:table-fixed py-12 bg-gray-200 rounded-lg border-separate border-spacing-2">

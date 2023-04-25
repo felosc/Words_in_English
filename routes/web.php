@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::controller(WordController::class)->group(function () {
+    Route::get('dashboard', 'countdasboard')->name('dashboard');
     Route::get('words.index', 'index')->name('word.index');
     Route::get('words', 'getRandomWords')->name('word.gameword');
     Route::post('word.answer', 'CompareAnswer')->name('word.answer');
