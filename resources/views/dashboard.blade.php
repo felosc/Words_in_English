@@ -12,32 +12,81 @@
                 <div class="p-6 text-gray-900">
                     Welcome to my page about a game of guessing words in English
                 </div>
-                @can('word.create')
-                <a href="{{ route("word.create") }}">
-                    <button  class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 " >
-                        Create a new word
-                    </button>
-                </a>
-                @endcan
                 
-                <a href="{{ route("word.index") }}">
-                    <button  class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 " >
-                    See or look up words
-                </button>
-                </a>
-                @can('user.index')    
+                
+                {{-- cuadro con contador de usuario @comentario --}}
+                <div class="rounded shadow-xl hover:shadow-md mb-12 w-64 p-4 bg-white">
+                  <div class="flex items-center">
+                    <div class="flex ">
+                      <span class=" bg-gray-200 rounded-md p-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase text-primary">
+                            <span class="material-symbols-outlined">
+                            group
+                            </span>
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="flex-1  ml-4 text-sm text-center">
+                      <p class="font-bold mb-3"> Are 
+                      </p>
+                      <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-3xl flex-grow mb-0">
+                          <span x-data="animatedCounter({{ $cus }}, 200, 0)" x-init="updatecounter" x-text="Math.round(current)"></span>
+                        </h4>
+                      </div>
+                      <p class="text-muted text-truncate mb-0">USERS REGISTRED</p>
+                    </div>
+                  </div>
+                  @can('word.create')
+                  <a href="{{ route("word.create") }}">
+                      <button  class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" >
+                          Create a new word 
+                      </button>
+                  </a>
+                  @endcan
+                                  @can('user.index')    
                 <a href="{{ route("user.index") }}">
-                    <button  class=" bg-blue-100 text-center m-2 p-3 rounded-sm hover:bg-sky-300 " >
+                    <button  class="inline-flex items-center px-4 py-2 mt-4 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" >
                         See or look up users
                     </button>
                 </a>
                 @endcan
-                <p>la base datos cuenta con</p>
-<span x-data="animatedCounter({{ $lel }}, 200)" x-init="updatecounter" x-text="Math.round(current)"></span>
-<p>palabras</p>
-            </div>
+            </div>              
+  </div>
+
+
+                                  {{-- cuadro con contrado de palabras @comentario --}}
+                  <div class="rounded shadow-xl hover:shadow-md mb-12 w-64 p-4 bg-white">
+    <div class="flex items-center">
+      <div class="flex ">
+        <span class=" bg-gray-200 rounded-md p-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase text-primary">
+                <span class="material-symbols-outlined">
+                sort_by_alpha
+                </span>
+          </svg>
+        </span>
+      </div>
+      <div class="flex-1  ml-4 text-sm text-center">
+        <p class="font-bold mb-3"> WE HAVE 
+        </p>
+        <div class="flex items-center justify-between mb-3">
+          <h4 class="font-bold text-3xl flex-grow mb-0">
+            <span x-data="animatedCounter({{ $cws }}, 200, 0)" x-init="updatecounter" x-text="Math.round(current)"></span>
+          </h4>
         </div>
+        <p class="text-muted text-truncate mb-0">WORDS REGISTRED</p>
+      </div>
     </div>
+    <a href="{{ route("word.index") }}">
+        <button  class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" >
+        See or look up words
+    </button>
+    </a>
+  </div>
+
+        </div>
+</div>
 
     <script>
   function animatedCounter(targer, time = 200, start = 0) {

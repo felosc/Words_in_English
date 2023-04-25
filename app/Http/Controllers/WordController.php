@@ -11,18 +11,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class WordController extends Controller
 {
-    /*
-    public function __construct()
-    {
-        $current_words = Word::count();
-        return view('dashboard', compact('current_words'));
-    }
-    */
-    public function  countdasboard()
-    {
-        $lel = Word::count();
-        return view('dashboard', compact('lel'));
-    }
 
 
     public function index()

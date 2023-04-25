@@ -6,7 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\UserController;
-
+use App\Models\User;
+use App\Models\Word;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $cus = User::count();
+    $cws = Word::count();
+    return view('dashboard', compact('cus', 'cws'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -34,7 +37,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::controller(WordController::class)->group(function () {
-    Route::get('dashboard', 'countdasboard')->name('dashboard');
+    //Route::get('/dashboard', 'countdasboard')->name('dashboard');
     Route::get('words.index', 'index')->name('word.index');
     Route::get('words', 'getRandomWords')->name('word.gameword');
     Route::post('word.answer', 'CompareAnswer')->name('word.answer');
@@ -47,12 +50,11 @@ Route::controller(WordController::class)->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    //Route::get('/dashboard', [UserController::class, 'countDasboardUs'])->name('dashboard');
     Route::delete('user.delete/{user}', [UserController::class, 'destroy'])->name('user.delete');
     Route::get('user.edit/{user}', [UserController::class, 'edit'])->name('user.edit');
     Route::get('user.show/{user}', [UserController::class, 'show'])->name('user.show');
     Route::put('user.update/{user}', [UserController::class, 'update'])->name('user.update');
-    Route::post('user.store', [WordController::class, 'store'])->name('user.store');
-    Route::get('user.create', [WordController::class, 'create'])->name('user.create');
     Route::get('user.index', [UserController::class, 'index'])->name('user.index');
 });
 
