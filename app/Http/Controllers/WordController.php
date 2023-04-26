@@ -12,7 +12,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 class WordController extends Controller
 {
 
-
     public function index()
     {
         $getwords = Word::all();
