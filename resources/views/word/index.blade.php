@@ -18,6 +18,11 @@
         @endif
     </div>
 
+    <div class="container"> 
+        <form action="" method="post">
+            <input class="" id="search" type="text" placeholder="search word...">
+            </form> 
+  </div>
 
     
 <div class="max-w-lg mx-auto mt-5 text-center grid grid-cols-3">
@@ -45,5 +50,19 @@
         });
     }); 
 
+</script>
+<script type="text/javascript">
+    var path = "{{ route('search') }}";
+    
+    $('#search').typeahead({
+        source: function (query, process) {
+                return $.get(path, {
+                    query: query
+                }, function (data) {
+                    return process(data);
+                });
+            }
+        });
+  
 </script>
 </x-app-layout>

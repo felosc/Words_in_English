@@ -18,6 +18,13 @@ class WordController extends Controller
         return view('word.index', compact('getwords'));
     }
 
+    public function searchWord(Request $request)
+    {
+        $query = $request->get('qery');
+        $data = Word::search('name', 'LIKE', '%' . $query . '%')->get();
+        return response()->json($data);
+    }
+
     public function getRandomWords()
     {
         $conuntwords = word::count();
