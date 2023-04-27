@@ -74,11 +74,22 @@ class WordController extends Controller
             'w_spanish' => $request->new_word_spanish,
         ]);
 
-        if ($new_word->save() == true) {
+
+        try {
+
+            $new_word->save() == true;
             return redirect()->back()->with(["success" => "Palabra Nueva Guardada"]);
-        } else {
-            return redirect()->back()->with(["fail" => "Error Al Guardar La Nueva Palabra"]);
-        };
+        } catch (\Exception $e) {
+            $info = $e->getPrevious();
+            $code = $info->errorInfo[1];
+            $message = $info->errorInfo[2];
+            if ($code == 1062) {
+                return redirect()->back()->with(["fail" => "The word " . "{{$request->new_word}}"  . " already exists"]);
+            }
+
+            return redirect()->back()->with(["fail" => "{{ $message }}"]);
+            //throw $th;
+        }
     }
 
     /**
