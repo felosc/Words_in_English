@@ -17,13 +17,13 @@
         </div>
         @endif
     </div>
-
-    <div class="container"> 
-        <form action="" method="post">
-            <input class="" id="search" type="text" placeholder="search word...">
-            </form> 
+    
+    <div class="container felx-ce text-center"> 
+        <form action="{{ route('search') }}" method="GET">
+            <input class="form-control " name="search" type="search" placeholder="search word..." value="{{ request('search') }}">
+            <button type="submit">search</button>
+        </form> 
   </div>
-
     
 <div class="max-w-lg mx-auto mt-5 text-center grid grid-cols-3">
     @foreach ($getwords as $word )
@@ -50,19 +50,5 @@
         });
     }); 
 
-</script>
-<script type="text/javascript">
-    var path = "{{ route('search') }}";
-    
-    $('#search').typeahead({
-        source: function (query, process) {
-                return $.get(path, {
-                    query: query
-                }, function (data) {
-                    return process(data);
-                });
-            }
-        });
-  
 </script>
 </x-app-layout>
