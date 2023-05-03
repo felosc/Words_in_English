@@ -27,11 +27,13 @@ class WordController extends Controller
 
         if ($s_word) {
             foreach ($s_word as $s_like) {
-                $palabra .= '<tr>' .
-                    '<td>' . $s_like->id . '</td>' .
-                    '<td>' . $s_like->word . '</td>' .
-                    '<td>' . $s_like->w_spanish . '</td>' .
-                    '</tr>';
+                $palabra .= '<button>' .
+                    '<a href="/word.show/' . $s_like->id . '">' .
+                    '<div class="bg-sky-500 m-2 rounded-md hover:bg-sky-300 p-4">' .
+                    '<p>' . $s_like->word . '</p>'
+                    . '</div>' .
+                    '</a>' .
+                    '</button>';
             }
             return Response($palabra);
         }

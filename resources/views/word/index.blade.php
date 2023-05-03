@@ -18,20 +18,19 @@
         @endif
     </div>
     
-    <div class="container felx-ce text-center"> 
+    <div class=" text-center"> 
         <form action="{{ route('search') }}" method="GET">
-            <input class="form-control " id="search" name="search" type="search" placeholder="search word..." value="{{ request('search') }}">
+            
+            <input class="form-control " id="search" name="search" type="search" placeholder="search word..." value="">
             <button type="submit">search</button>
         </form> 
   </div>
 
-  <div class="text-center m-5 p-5 bg-slate-500">
-    <h1>hola</h1>
-    <p class=" content-center " id="show-data"></p>    
+  <div class="max-w-lg mx-auto mt-5 text-center grid grid-cols-3" id="show-data">  
   </div>
 
     
-<div class="max-w-lg mx-auto mt-5 text-center grid grid-cols-3">
+<div class="max-w-lg mx-auto mt-5 text-center grid grid-cols-3" id="index">
     @foreach ($getwords as $word )
         <button>
                 <a href="{{ route('word.show',$word->id) }}">
@@ -64,17 +63,18 @@
 $('#search').on('keyup',function(event){
     $value=$(this).val();
 if ($value=="") {
-    $('#show-data').text("NO DATA");
+    $('#show-data').hide()
+    $('#index').show()
      event.stopPropagation();
         return false;
 }else{
+    $('#index').hide()
     $.ajax({
         type : 'get',
         url : '{{URL::to('search')}}',
         data:{'search':$value},
         success:function(data){
             $('#show-data').html(data);
-            console.log(data);
         }
     });
 }
