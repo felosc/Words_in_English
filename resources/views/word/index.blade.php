@@ -20,10 +20,16 @@
     
     <div class="container felx-ce text-center"> 
         <form action="{{ route('search') }}" method="GET">
-            <input class="form-control " name="search" type="search" placeholder="search word..." value="{{ request('search') }}">
+            <input class="form-control " id="search" name="search" type="search" placeholder="search word..." value="{{ request('search') }}">
             <button type="submit">search</button>
         </form> 
   </div>
+
+  <div class="text-center m-5 p-5 bg-slate-500">
+    <h1>hola</h1>
+    <p class=" content-center " id="show-data"></p>    
+  </div>
+
     
 <div class="max-w-lg mx-auto mt-5 text-center grid grid-cols-3">
     @foreach ($getwords as $word )
@@ -51,4 +57,31 @@
     }); 
 
 </script>
+
+
+<script type="text/javascript">
+
+$('#search').on('keyup',function(event){
+    $value=$(this).val();
+if ($value=="") {
+    $('#show-data').text("NO DATA");
+     event.stopPropagation();
+        return false;
+}else{
+    $.ajax({
+        type : 'get',
+        url : '{{URL::to('search')}}',
+        data:{'search':$value},
+        success:function(data){
+            $('#show-data').html(data);
+            console.log(data);
+        }
+    });
+}
+})
+</script>
+
+
+
+
 </x-app-layout>

@@ -20,9 +20,21 @@ class WordController extends Controller
 
     public function searchWord(Request $request)
     {
+
+        $palabra = "";
         $query = $request->query("search");
         $s_word = Word::where('word', 'LIKE', '%' . $query . '%')->get();
-        return $s_word;
+
+        if ($s_word) {
+            foreach ($s_word as $s_like) {
+                $palabra .= '<tr>' .
+                    '<td>' . $s_like->id . '</td>' .
+                    '<td>' . $s_like->word . '</td>' .
+                    '<td>' . $s_like->w_spanish . '</td>' .
+                    '</tr>';
+            }
+            return Response($palabra);
+        }
     }
 
     public function getRandomWords()
