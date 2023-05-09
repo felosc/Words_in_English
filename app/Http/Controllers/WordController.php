@@ -21,6 +21,7 @@ class WordController extends Controller
     public function searchWord(Request $request)
     {
 
+
         $palabra = "";
         $query = $request->query("search");
         $s_word = Word::where('word', 'LIKE', '%' . $query . '%')->get();

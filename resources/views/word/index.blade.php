@@ -19,8 +19,7 @@
     </div>
     
     <div class=" text-center"> 
-        <form action="{{ route('search') }}" method="GET">
-            
+        <form>            
             <input class="form-control " id="search" name="search" type="search" placeholder="search word..." value="">
             <button type="submit">search</button>
         </form> 
@@ -29,7 +28,7 @@
   <div class="max-w-lg mx-auto mt-5 text-center grid grid-cols-3" id="show-data">  
   </div>
 
-    
+
 <div class="max-w-lg mx-auto mt-5 text-center grid grid-cols-3" id="index">
     @foreach ($getwords as $word )
         <button>
@@ -49,35 +48,42 @@
         $("#alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
             $("#alert-dismissible").alert('close');
         });
-
-        $('[data-toggle="tooltip"]').tooltip({
-            trigger : 'hover'
-        });
     }); 
 
 </script>
 
 
 <script type="text/javascript">
-
-$('#search').on('keyup',function(event){
-    $value=$(this).val();
-if ($value=="") {
-    $('#show-data').hide()
-    $('#index').show()
-     event.stopPropagation();
+    $(document).ready(function(){
+        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
+        
+        $('#search').on('keyup',function(event){
+            $value=$(this).val();
+            if ($value=="") {
+                $('#show-data').hide()
+                $('#index').show()
+                event.stopPropagation();
         return false;
-}else{
+    }else{
     $('#index').hide()
     $.ajax({
         type : 'get',
         url : '{{URL::to('search')}}',
         data:{'search':$value},
         success:function(data){
+            $('#show-data').show()
             $('#show-data').html(data);
+            console.log(data);
         }
     });
 }
+})
 })
 </script>
 
