@@ -106,7 +106,7 @@ class WordController extends Controller
             $code = $info->errorInfo[1];
             $message = $info->errorInfo[2];
             if ($code == 1062) {
-                return redirect()->back()->with(["fail" => "The word " . "{{$request->new_word}}"  . " already exists"]);
+                return redirect()->back()->with(["fail" => "The word " . "**$request->new_word**"  . " already exists"]);
             }
 
             return redirect()->back()->with(["fail" => "{{ $message }}"]);
