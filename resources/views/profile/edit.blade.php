@@ -50,10 +50,10 @@
             $("#alert-dismissible").alert('close');
         });
 
-        $('[data-toggle="tooltip"]').tooltip({
-            trigger : 'hover'
-        });
     });
 </script>
 
 </x-app-layout>
+
+
+
